@@ -2,24 +2,80 @@
 public class ChangeNumber {
 
     public int toBinary(int decimal) {
-        int counter = 0;
-        int remainder = 0;
-        int result = 0;
-      if(decimal<0){
-
-      }
-        while (decimal != 0) {
-            remainder = decimal % 2;
-            result += remainder * (int) Math.pow(10, counter);
-            decimal = decimal / 2;
-            counter++;
+        if(decimal<0){
+            int result=positiveDecimalTobinary(decimal)*-1;
+            String resultDecimal=result+"";
+            char[] array=resultDecimal.toCharArray();
+            String resulString="";
+            for(int i=0;i<array.length;i++){
+                if(array[i]=='0') array[i]='1';
+                else array[i]='0';
+                resulString+=array[i];
+            }
+            result=fromBinary(resulString);
+            result++;
+            return positiveDecimalTobinary(result);
         }
-    
-
-        return result;
+      return positiveDecimalTobinary(decimal);
     }
 
     public int toOctal(int decimal) {
+        if(decimal<0){
+            int result=toBinary(decimal);
+            result=fromBinary(result+"");
+            return positiveDecimalToOctal(result);
+        }
+        return positiveDecimalToOctal(decimal);
+    }
+    public String toHex(int decimal) {
+       return positiveDecimalToHex(decimal);
+    }
+
+  
+    public int fromBinary(String binaryString){
+        char[] array=binaryString.toCharArray();
+        int result=0;
+        int tempResult=0;
+        for(int i=0;i<array.length;i++){
+             tempResult=getNumFromChar(array[i])*(int)Math.pow(2, array.length-i-1);
+             result+=tempResult;
+        }
+        return result;
+    }
+    public int fromOctal(String octalString){
+        char[] array=octalString.toCharArray();
+        int result=0;
+        int tempResult=0;
+        for(int i=0;i<array.length;i++){
+             tempResult=Integer.parseInt(array[i]+"")*(int)Math.pow(8, array.length-i-1);
+             result+=tempResult;
+        }
+        return result;
+    }
+    public int fromHex(String hexString){
+        char[] array=hexString.toCharArray();
+        int result=0;
+        int tempResult=0;
+        for(int i=0;i<array.length;i++){
+             tempResult=getNumFromChar(array[i])*(int)Math.pow(16, array.length-i-1);
+             result+=tempResult;
+        }
+        return result;
+    }
+    private int positiveDecimalTobinary(int decimal){
+        int counter = 0;
+        int remainder = 0;
+        int result = 0;
+        while (decimal != 0) {
+            remainder = decimal % 2;
+            result += (int) Math.pow(10, counter) * remainder;
+            decimal = decimal / 2;
+            counter++;
+        }
+        return result;
+    }
+
+    private int positiveDecimalToOctal(int decimal){
         int counter = 0;
         int remainder = 0;
         int result = 0;
@@ -31,7 +87,7 @@ public class ChangeNumber {
         }
         return result;
     }
-    public String toHex(int decimal) {
+    private String positiveDecimalToHex(int decimal){
         int remainder = 0;
         String hexString = "";
         String hexCopy = "";
@@ -44,39 +100,6 @@ public class ChangeNumber {
         }
         return hexString;
     }
-
-  
-    public int fromBinary(String binaryString){
-        char[] array=binaryString.toCharArray();
-        int result=0;
-        int tempResult=0;
-        for(int i=array.length-1;i>=0;i++){
-             tempResult=getNumFromChar(array[i])*(int)Math.pow(2, i);
-             result+=tempResult;
-        }
-        return result;
-    }
-    public int fromOctal(String octalString){
-        char[] array=octalString.toCharArray();
-        int result=0;
-        int tempResult=0;
-        for(int i=array.length-1;i>=0;i++){
-             tempResult=Integer.parseInt(array[i]+"")*(int)Math.pow(8, i);
-             result+=tempResult;
-        }
-        return result;
-    }
-    public int fromHex(String hexString){
-        char[] array=hexString.toCharArray();
-        int result=0;
-        int tempResult=0;
-        for(int i=array.length-1;i>=0;i++){
-             tempResult=Integer.parseInt(array[i]+"")*(int)Math.pow(8, i);
-             result+=tempResult;
-        }
-        return result;
-    }
-
     private String getCharNum(int num) {
         if (num == 10)
             return "A";

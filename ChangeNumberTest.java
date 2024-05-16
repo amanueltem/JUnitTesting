@@ -1,11 +1,13 @@
 import static org.junit.Assert.assertEquals;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class ChangeNumberTest {
     private ChangeNumber cNumber = new ChangeNumber();
 
-    @Test
+    @After
     public void testToBinary() {
         assertEquals(10000, cNumber.toBinary(16)); 
         assertEquals(101,cNumber.toBinary(-27));
@@ -16,10 +18,10 @@ public class ChangeNumberTest {
 
        assertEquals(5,cNumber.toOctal(-27));
     }
-    @Test
+    @Before
     public void testToHex() {
         assertEquals("B4", cNumber.toHex(180));
-       // assertEquals("5",cNumber.toHex(-27));
+        assertEquals("5",cNumber.toHex(-27));
     }
     @Test
     public void testFromBinary(){

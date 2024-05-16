@@ -10,5 +10,9 @@ public class ChangeNumberTest {
     public void testToOctal() {
         assertEquals(131, cNumber.toOctal(89));
     }
+    @Test
+    public void testToHex() {
+        assertEquals("B4", cNumber.toHex(180));
+    }
 
 }

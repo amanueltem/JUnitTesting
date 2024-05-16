@@ -30,4 +30,34 @@ public class ChangeNumber {
         }
         return result;
     }
+    public String toHex(int decimal) {
+        int remainder = 0;
+        String hexString = "";
+        String hexCopy = "";
+        while (decimal != 0) {
+            remainder = decimal % 16;
+            hexCopy = getCharNum(remainder);
+            hexCopy += hexString;
+            hexString = hexCopy;
+            decimal = decimal / 16;
+        }
+        return hexString;
+    }
+
+    private String getCharNum(int num) {
+        if (num == 10)
+            return "A";
+        else if (num == 11)
+            return "B";
+        else if (num == 12)
+            return "C";
+        else if (num == 13)
+            return "D";
+        else if (num == 14)
+            return "E";
+        else if (num == 15)
+            return "F";
+        else
+            return num + "";
+    }
 }

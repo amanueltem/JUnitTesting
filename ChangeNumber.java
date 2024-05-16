@@ -28,17 +28,7 @@ public class ChangeNumber {
         return positiveDecimalToOctal(decimal);
     }
     public String toHex(int decimal) {
-        int remainder = 0;
-        String hexString = "";
-        String hexCopy = "";
-        while (decimal != 0) {
-            remainder = decimal % 16;
-            hexCopy = getCharNum(remainder);
-            hexCopy += hexString;
-            hexString = hexCopy;
-            decimal = decimal / 16;
-        }
-        return hexString;
+       return positiveDecimalToHex(decimal);
     }
 
   
@@ -97,7 +87,19 @@ public class ChangeNumber {
         }
         return result;
     }
-
+    private String positiveDecimalToHex(int decimal){
+        int remainder = 0;
+        String hexString = "";
+        String hexCopy = "";
+        while (decimal != 0) {
+            remainder = decimal % 16;
+            hexCopy = getCharNum(remainder);
+            hexCopy += hexString;
+            hexString = hexCopy;
+            decimal = decimal / 16;
+        }
+        return hexString;
+    }
     private String getCharNum(int num) {
         if (num == 10)
             return "A";

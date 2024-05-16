@@ -15,6 +15,7 @@ public class ChangeNumberTest {
     @Test
     public void testToHex() {
         assertEquals("B4", cNumber.toHex(180));
+        assertEquals("5",cNumber.toHex(-27));
     }
     @Test
     public void testFromBinary(){

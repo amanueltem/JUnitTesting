@@ -6,4 +6,9 @@ public class ChangeNumberTest {
     public void testToBinary() {
         assertEquals(10000, cNumber.toBinary(16)); // for birzaf
     }
+    @Test
+    public void testToOctal() {
+        assertEquals(131, cNumber.toOctal(89));
+    }
+
 }

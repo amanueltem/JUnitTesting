@@ -20,6 +20,10 @@ public class ChangeNumberTest {
     }
     @Test
     public void testFromOCtal(){
-        assertEquals.(89,cNumber.fromOctal("131"));
+        assertEquals(89,cNumber.fromOctal("131"));
+    }
+    @Test
+    public void testFromHex(){
+        assertEquals(180,cNumber.fromHex("B4"));
     }
 }

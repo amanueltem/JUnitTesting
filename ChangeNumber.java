@@ -60,4 +60,14 @@ public class ChangeNumber {
         else
             return num + "";
     }
+    public int fromBinary(String binaryString){
+        char[] array=binaryString.toCharArray();
+        int result=0;
+        int tempResult=0;
+        for(int i=array.length-1;i>=0;i++){
+             tempResult=Integer.parseInt(array[i]+"")*(int)Math.pow(2, i);
+             result+=tempResult;
+        }
+        return result;
+    }
 }

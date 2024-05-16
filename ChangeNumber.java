@@ -28,6 +28,11 @@ public class ChangeNumber {
         return positiveDecimalToOctal(decimal);
     }
     public String toHex(int decimal) {
+        if(decimal<0){
+            int result=toBinary(decimal);
+            result=fromBinary(result+"");
+            return positiveDecimalToHex(result);
+        }
        return positiveDecimalToHex(decimal);
     }
 

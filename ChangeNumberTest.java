@@ -18,6 +18,8 @@ public class ChangeNumberTest {
     public void testFromBinary(){
         assertEquals(16,cNumber.fromBinary("10000"));
     }
-    
-
+    @Test
+    public void testFromOCtal(){
+        assertEquals.(89,cNumber.fromOctal("131"));
+    }
 }

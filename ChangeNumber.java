@@ -70,4 +70,14 @@ public class ChangeNumber {
         }
         return result;
     }
+    public int fromOctal(String octalString){
+        char[] array=octalString.toCharArray();
+        int result=0;
+        int tempResult=0;
+        for(int i=array.length-1;i>=0;i++){
+             tempResult=Integer.parseInt(array[i]+"")*(int)Math.pow(8, i);
+             result+=tempResult;
+        }
+        return result;
+    }
 }

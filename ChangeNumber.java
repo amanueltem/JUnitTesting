@@ -2,28 +2,34 @@
 public class ChangeNumber {
 
     public int toBinary(int decimal) {
-        int counter = 0;
-        int remainder = 0;
-        int result = 0;
-      if(decimal<0){
-
-      }
-        while (decimal != 0) {
-            remainder = decimal % 2;
-            result += remainder * (int) Math.pow(10, counter);
-            decimal = decimal / 2;
-            counter++;
+        if(decimal<0){
+            int result=positiveDecimalTobinary(decimal)*-1;
+            String resultDecimal=result+"";
+            char[] array=resultDecimal.toCharArray();
+            String resulString="";
+            for(int i=0;i<array.length;i++){
+                if(array[i]=='0') array[i]='1';
+                else array[i]='0';
+                resulString+=array[i];
+            }
+            result=fromBinary(resulString);
+            result++;
+            return positiveDecimalTobinary(result);
         }
-        return result;
+      return positiveDecimalTobinary(decimal);
     }
 
     public int toOctal(int decimal) {
-      if(decimal>=0){
-        return positiveDecimalTobinary(decimal);
-      }
-      else{
-        return 0;
-      }
+        int counter = 0;
+        int remainder = 0;
+        int result = 0;
+        while (decimal != 0) {
+            remainder = decimal % 8;
+            result += remainder * (int) Math.pow(10, counter);
+            decimal = decimal / 8;
+            counter++;
+        }
+        return result;
     }
     public String toHex(int decimal) {
         int remainder = 0;
@@ -75,9 +81,9 @@ public class ChangeNumber {
         int remainder = 0;
         int result = 0;
         while (decimal != 0) {
-            remainder = decimal % 8;
+            remainder = decimal % 2;
             result += (int) Math.pow(10, counter) * remainder;
-            decimal = decimal / 8;
+            decimal = decimal / 2;
             counter++;
         }
         return result;

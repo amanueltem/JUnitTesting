@@ -14,22 +14,16 @@ public class ChangeNumber {
             decimal = decimal / 2;
             counter++;
         }
-    
-
         return result;
     }
 
     public int toOctal(int decimal) {
-        int counter = 0;
-        int remainder = 0;
-        int result = 0;
-        while (decimal != 0) {
-            remainder = decimal % 8;
-            result += (int) Math.pow(10, counter) * remainder;
-            decimal = decimal / 8;
-            counter++;
-        }
-        return result;
+      if(decimal>=0){
+        return positiveDecimalTobinary(decimal);
+      }
+      else{
+        return 0;
+      }
     }
     public String toHex(int decimal) {
         int remainder = 0;
@@ -50,8 +44,8 @@ public class ChangeNumber {
         char[] array=binaryString.toCharArray();
         int result=0;
         int tempResult=0;
-        for(int i=array.length-1;i>=0;i++){
-             tempResult=getNumFromChar(array[i])*(int)Math.pow(2, i);
+        for(int i=0;i<array.length;i++){
+             tempResult=getNumFromChar(array[i])*(int)Math.pow(2, array.length-i-1);
              result+=tempResult;
         }
         return result;
@@ -60,8 +54,8 @@ public class ChangeNumber {
         char[] array=octalString.toCharArray();
         int result=0;
         int tempResult=0;
-        for(int i=array.length-1;i>=0;i++){
-             tempResult=Integer.parseInt(array[i]+"")*(int)Math.pow(8, i);
+        for(int i=0;i<array.length;i++){
+             tempResult=Integer.parseInt(array[i]+"")*(int)Math.pow(8, array.length-i-1);
              result+=tempResult;
         }
         return result;
@@ -70,13 +64,24 @@ public class ChangeNumber {
         char[] array=hexString.toCharArray();
         int result=0;
         int tempResult=0;
-        for(int i=array.length-1;i>=0;i++){
-             tempResult=Integer.parseInt(array[i]+"")*(int)Math.pow(8, i);
+        for(int i=0;i<array.length;i++){
+             tempResult=getNumFromChar(array[i])*(int)Math.pow(16, array.length-i-1);
              result+=tempResult;
         }
         return result;
     }
-
+    private int positiveDecimalTobinary(int decimal){
+        int counter = 0;
+        int remainder = 0;
+        int result = 0;
+        while (decimal != 0) {
+            remainder = decimal % 8;
+            result += (int) Math.pow(10, counter) * remainder;
+            decimal = decimal / 8;
+            counter++;
+        }
+        return result;
+    }
     private String getCharNum(int num) {
         if (num == 10)
             return "A";

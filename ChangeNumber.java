@@ -20,16 +20,12 @@ public class ChangeNumber {
     }
 
     public int toOctal(int decimal) {
-        int counter = 0;
-        int remainder = 0;
-        int result = 0;
-        while (decimal != 0) {
-            remainder = decimal % 8;
-            result += remainder * (int) Math.pow(10, counter);
-            decimal = decimal / 8;
-            counter++;
+        if(decimal<0){
+            int result=toBinary(decimal);
+            result=fromBinary(result+"");
+            return positiveDecimalToOctal(result);
         }
-        return result;
+        return positiveDecimalToOctal(decimal);
     }
     public String toHex(int decimal) {
         int remainder = 0;
@@ -88,6 +84,20 @@ public class ChangeNumber {
         }
         return result;
     }
+
+    private int positiveDecimalToOctal(int decimal){
+        int counter = 0;
+        int remainder = 0;
+        int result = 0;
+        while (decimal != 0) {
+            remainder = decimal % 8;
+            result += (int) Math.pow(10, counter) * remainder;
+            decimal = decimal / 8;
+            counter++;
+        }
+        return result;
+    }
+
     private String getCharNum(int num) {
         if (num == 10)
             return "A";

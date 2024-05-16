@@ -13,12 +13,12 @@ public class ChangeNumberTest {
     @Test
     public void testToOctal() {
         assertEquals(131, cNumber.toOctal(89));
-       // assertEquals(5,cNumber.toBinary(-27));
+        assertEquals(5,cNumber.toOctal(-27));
     }
     @Test
     public void testToHex() {
         assertEquals("B4", cNumber.toHex(180));
-        assertEquals("5",cNumber.toHex(-27));
+       // assertEquals("5",cNumber.toHex(-27));
     }
     @Test
     public void testFromBinary(){

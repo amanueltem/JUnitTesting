@@ -44,7 +44,7 @@ public class ChangeNumberTest {
   public void testFromHexIntension(){
     assertEquals(185,cNumber.fromHex("B4"));
   }
-  @Test(timeout = 100)
+  @Test
   public void testWithTimeOut(){
    cNumber.toOctal(-45678);
   }

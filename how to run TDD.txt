@@ -1,2 +1,6 @@
-1.javac -cp ".;junit-4.13.2.jar" enterName.java
-2.java -cp ".;junit-4.13.2.jar;hamcrest-core-1.3.jar" org.junit.runner.JUnitCore enterName
+########## for Windows #############
+javac -cp ".;junit-4.13.2.jar" ChangeNumberTest.java
+java -cp ".;junit-4.13.2.jar;hamcrest-core-1.3.jar" org.junit.runner.JUnitCore ChangeNumberTest
+########## for Mac and linux #############
+javac -cp ".:junit-4.13.2.jar" ChangeNumberTest.java
+java -cp ".:junit-4.13.2.jar:hamcrest-core-1.3.jar" org.junit.runner.JUnitCore ChangeNumberTest

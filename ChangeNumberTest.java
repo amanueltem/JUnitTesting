@@ -44,8 +44,17 @@ public class ChangeNumberTest {
   public void testFromHexIntension(){
     assertEquals(185,cNumber.fromHex("B4"));
   }
-  @Test(timeout = 100)
+  @Test
   public void testWithTimeOut(){
    cNumber.toOctal(-45678);
+   long startTime = System.nanoTime();
+   cNumber.toOctal(-45678);
+   long endTime = System.nanoTime();
+   
+   // Calculate the duration in nanoseconds
+   long duration = endTime - startTime;
+   
+   // Check if the duration is less than 1 millisecond (1,000,000 nanoseconds)
+   assertTrue("Method took too long to execute", duration < 1_000);
   }
 }

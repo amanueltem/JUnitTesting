@@ -17,11 +17,13 @@ public class ChangeNumberTest {
         assertTrue(1001==cNumber.toBinary(9));
         assertFalse(1001==cNumber.toBinary(8));
     }
+    //This method will be executed after the other methods execution finshed
     @After
     public void testToOctal() {
         assertEquals(131, cNumber.toOctal(89));
        assertEquals(5,cNumber.toOctal(-27));
     }
+    //This method will be executed before the other methods execution starts
     @Before
     public void testToHex() {
         assertEquals("B4", cNumber.toHex(180));
@@ -54,7 +56,7 @@ public class ChangeNumberTest {
    // Calculate the duration in nanoseconds
    long duration = endTime - startTime;
    
-   // Check if the duration is less than 1 millisecond (1,000,000 nanoseconds)
+   // Check if the duration is less than 1 millisecond (1,000 nanoseconds)
    assertTrue("Method took too long to execute", duration < 1_000);
   }
 }

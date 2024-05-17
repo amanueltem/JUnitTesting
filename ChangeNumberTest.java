@@ -56,7 +56,7 @@ public class ChangeNumberTest {
    // Calculate the duration in nanoseconds
    long duration = endTime - startTime;
    
-   // Check if the duration is less than 1 millisecond (1,000 nanoseconds)
-   assertTrue("Method took too long to execute", duration < 1_000);
+   // Check if the duration is less than 1 millisecond (1,000,000, nanoseconds)
+   assertTrue("Method took too long to execute", duration < 1_000_000);
   }
 }
